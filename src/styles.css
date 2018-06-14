@@ -292,3 +292,22 @@ app-nodes {
 .tabs mat-ink-bar {
     display: none !important;
 }
+
+.switch mat-slide-toggle {
+    height: 45px !important;
+}
+
+.switch .mat-slide-toggle-label {
+    flex-direction: column-reverse !important;
+}
+
+.switch .mat-slide-toggle-content {
+    margin-bottom: 10px;
+}
+
+.switch .mat-slide-toggle-content {
+    color: #ffffff;
+    font-family: CiscoSansTTRegular;
+    font-size: 18px;
+    letter-spacing: -1px;
+}
