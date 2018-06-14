@@ -1,0 +1,55 @@
+<app-dashboard-widget></app-dashboard-widget>
+<div class="wrapper" id="t1">
+  <div class="content">
+    <div class="header-controls">
+      <clr-icon shape="bell" class="has-badge is-solid is-inverse" [ngClass]="{'has-badge': notif}" size="45" (click)="pushNotification()"></clr-icon>
+      <a routerLink="/dashboard"><clr-icon shape="window-close" size="40" class="black"></clr-icon></a>
+    </div>
+    <div class="title text-center">Tier1 Validation</div>
+    <div class="form-steps">
+      <fieldset>
+        <legend>Step 1</legend>
+        <div class="field-content">
+          <div class="left">
+            <label for="vnet-name" class="design-title">VNet Design Name</label>
+            <div id="vnet-name">{{ designName }}</div>
+          </div>
+          <div class="right text-right validation">
+            <button class="btn2" (click)="validate()">Offline Validation</button>
+            <div class="progress labeled text-right">
+              <progress max="100" value="{{ progress }}" [attr.data-displayval]="progress + '%'"></progress>
+              <span class="progress-text">{{ progress }}%</span>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Step 2</legend>
+        <div class="field-content">
+          <div class="left">
+            <label class="verdict-title">Verdict</label>
+          </div>
+          <div class="right text-right">
+            <div class="radio-inline">
+              <input type="radio" name="radio_yes" id="checkrads_11" value="yes" [(ngModel)]="verdict">
+              <label for="checkrads_11">Yes</label>
+            </div>
+            <div class="radio-inline">
+              <input type="radio" name="radio_no" id="checkrads_12" value="no" [(ngModel)]="verdict">
+              <label for="checkrads_12">No</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Step 3</legend>
+        <div class="field-content">
+          <div class="left verdict-title">Deploy Verdict to Blockchain</div>
+          <div class="right text-right">
+            <button class="btn1" (click)="deployVerdict()">Deploy Verdict</button>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<clr-modal [(clrModalOpen)]="isNotificationDialogOpen" id="notif" [clrModalStaticBackdrop]="true" class="msg-{{severity}}">
+    <h3 class="modal-title text-capitalize">{{ title }}</h3>
+    <div class="modal-body">
+        <clr-alerts>
+        <clr-alert [clrAlertType]="severity" [clrAlertClosable]="false">
+            <div class="alert-item">
+                <span class="alert-text">
+                    {{ msg }}
+                </span>
+            </div>
+        </clr-alert>
+        </clr-alerts>
+    </div>
+</clr-modal>

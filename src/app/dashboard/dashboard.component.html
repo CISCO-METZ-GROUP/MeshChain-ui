@@ -1,0 +1,38 @@
+<div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+  <button routerLink="/tier1" class="dash-button">
+    <svg class="button-icon" width="70" height="70">
+      <g>
+        <circle cx="35" cy="35" r="35" fill="#5AB95C" />
+        <image href="/assets/images/icons/building-solid.svg" width="50" height="50" x="12" y="10"></image>
+      </g>
+    </svg>
+    <span class="button-text">Enterprise Service Mesh</span>
+  </button>
+  <button routerLink="/blockchain" class="dash-button">
+    <svg class="button-icon" width="70" height="70">
+      <g>
+        <circle cx="35" cy="35" r="35" fill="#D9544E" />
+        <image href="/assets/images/icons/link-line.svg" width="60" height="60" x="5" y="5"></image>
+      </g>
+    </svg>
+    <span class="button-text">Blockchain</span>
+  </button>
+  <button routerLink="/oem" class="dash-button">
+    <svg class="button-icon" width="70" height="70">
+      <g>
+        <circle cx="35" cy="35" r="35" fill="#E9AB49" />
+        <image href="/assets/images/icons/cloud-line.svg" width="50" height="50" x="12" y="10"></image>
+      </g>
+    </svg>
+    <span class="button-text">Public Cloud Service Mesh</span>
+  </button>
+</div>
+<clr-modal [(clrModalOpen)]="isSplashScreenOpened" [clrModalClosable]="false" class="vibes-modal">
+    <div class="modal-body">
+      <img class="logo-image" src="/assets/images/cisco.svg">
+      <h3 class="vibes-header">MeshChain</h3>
+      <button class="splashScreenButton" (click)="deploySmartContract()">Deploy Smart Contract</button><br>
+    </div>
+    <div class="modal-footer">
+    </div>
+</clr-modal>

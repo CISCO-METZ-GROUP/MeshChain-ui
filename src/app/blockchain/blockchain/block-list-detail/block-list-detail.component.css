@@ -1,0 +1,34 @@
+:host {
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    height: calc(100% - 232px);
+    background-color: #242424;
+}
+
+.content {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    background-color: #424242;
+    overflow: auto;
+}
+
+h3 {
+    color: #ffffff !important;
+    font-family: CiscoSansTTBold;
+}
+
+input, label {
+    color: #ffffff !important;
+    font-family: CiscoSansTTRegular;
+}
+
+.header-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

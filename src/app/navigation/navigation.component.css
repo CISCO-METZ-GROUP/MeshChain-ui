@@ -1,0 +1,19 @@
+.header {
+    background-color:#3E3E3E;
+}
+
+.logo-image1 {
+    width: 55px;
+    height: auto;
+}
+
+.nav-link .title {
+    padding-left: 20px;
+    padding-top: 5px;
+    font-family: CiscoSansTTBold;
+    font-size: 37px;
+}
+
+.btn1 {
+    top: 20%;
+}

@@ -1,0 +1,54 @@
+.wrapper {
+    width: 100%;
+    background-color: #242424;
+}
+
+.content {
+    width: 80%;
+    height: 172px;
+    margin: auto;
+    background-color: #242424;
+}
+
+.dash-button {
+    width: 407px;
+    height: 92px;
+    line-height: 92px;
+    background-color: #3e3e3e;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.dash-button.active::after {
+    content: '';
+    background-image: url('/assets/images/icons/triangle.svg');
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    bottom: -40px;
+    right: 100px;
+    pointer-events: none;
+}
+
+.t1-text {
+    font-family: Copperplate;
+    font-size: 40px;
+    color: #FFFFFF;
+    letter-spacing: -3.4px;
+}
+
+.button-text {
+    font-size: 36px;
+    font-family: CiscoSansTTBold;
+    letter-spacing: -2.55px;
+    color: #ffffff;
+    margin-left: 25px;
+}
+
+.button-icon {
+    position: absolute;
+    top: 11px;
+    left: 35px;
+}

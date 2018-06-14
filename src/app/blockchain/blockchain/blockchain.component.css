@@ -1,0 +1,13 @@
+.wrapper {
+    width: 100%;
+    height: calc(100% - 232px);
+    background-color: #242424;
+    position: relative;
+}
+
+.content {
+    width: 80%;
+    min-height: 80%;
+    margin: auto;
+    background-color: #424242;
+}

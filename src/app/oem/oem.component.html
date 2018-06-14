@@ -1,0 +1,30 @@
+<app-dashboard-widget></app-dashboard-widget>
+<div class="wrapper">
+  <div class="content">
+    <div class="header-controls">
+      <clr-icon shape="bell" class="is-solid is-inverse" [ngClass]="{'has-badge': notif}" size="45" (click)="pushNotification()"></clr-icon>
+      <a routerLink="/dashboard"><clr-icon shape="window-close" size="40" class="black"></clr-icon></a>
+    </div>
+      <div fxLayout="column" fxLayoutAlign="center" class="flex-wrap">
+        <div fxLayout="row" fxLayoutAlign="space-around none">
+          <div class="tile" (click)="selectDesign($event, 'VNetTopology1')">
+            <div class="img-wrap"><img src="/assets/images/vnet1.PNG" alt="vnet1"></div>
+            <div class="title">VNet Topology 1</div>
+          </div>
+          <div class="tile" (click)="selectDesign($event, 'VNetTopology1Updated')">
+            <div class="img-wrap"><img src="/assets/images/vnet2.PNG" alt="vnet2"></div>
+            <div class="title">VNet Topology 1 - Updated</div>
+          </div>
+          <div class="tile" (click)="selectDesign($event, 'VNetTopology2')">
+            <div class="img-wrap"><img src="/assets/images/vnet3.PNG" alt="vnet3"></div>
+            <div class="title">VNet Topology 2</div>
+          </div>
+          <div class="tile" (click)="selectDesign($event, 'NewVnetDesign')">
+            <div class="img-wrap"><img src="/assets/images/vnet4.PNG" alt="vnet4"></div>
+            <div class="title">New VNet Design</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn1" (click)="deployDesign()" [disabled]="!designName">Deploy VNet Design</button>
+  </div>
+</div>

@@ -1,1 +1,259 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: CiscoSansTTThin;
+    src: url('./assets/fonts/cisco/CiscoSansTTThin.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTThin.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTThin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: CiscoSans-Thin;
+    src: url('./assets/fonts/cisco/CiscoSansTTThin.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTThin.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTThin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: CiscoSansTTLight;
+    src: url('./assets/fonts/cisco/CiscoSansTTLight.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTLight.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: CiscoSansTTExtraLight;
+    src: url('./assets/fonts/cisco/CiscoSansTTExtraLight.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTExtraLight.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: CiscoSansTTRegular;
+    src: url('./assets/fonts/cisco/CiscoSansTTRegular.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTRegular.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: CiscoSansTTBold;
+    src: url('./assets/fonts/cisco/CiscoSansTTBold.woff') format('woff'),
+         url('./assets/fonts/cisco/CiscoSansTTBold.woff2') format('woff2'),
+         url('./assets/fonts/cisco/CiscoSansTTBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Copperplate;
+    src: url('./assets/fonts/Copperplate.ttf') format('truetype');
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+button:focus, a:focus {
+    outline: 0;
+}
+
+.full-page {
+    height: 100%;
+    width: 100%;
+}
+
+div.mat-list-item-content, div.mat-card-header-text {
+    width: 100%;
+}
+
+.mat-input-element:disabled {
+    color: rgba(0,0,0,1);
+}
+
+.mat-input-placeholder, .mat-select-placeholder, .mat-form-field-label {
+    color: #049FD9 !important;
+}
+
+.mat-input-placeholder-wrapper, .mat-input-element {
+    font-family: CiscoSansTTRegular, "Helvetica Neue", sans-serif;
+}
+
+.mat-card-header-text {
+    margin: 0 !important;
+}
+
+.with-divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+app-nodes {
+    width: 100%;
+    height: 100%;
+}
+
+.n-topology {
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.mat-sidenav-content {
+    overflow: hidden !important;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.ov-v {
+    overflow: visible !important;
+}
+
+.primary-button {
+    background-color: #049FD9;
+    color: white !important;
+}
+
+.primary-button-inverted {
+    color: #049FD9 !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.modal-dialog {
+    width: 665px;
+}
+
+.modal-dialog .modal-content {
+    background: #242424;
+}
+
+.black {
+    color: #000000;
+}
+
+#blockchain label, #t1 label {
+    color: #ffffff !important;
+}
+
+.bc-control {
+    padding: 0 !important;
+    min-width: 0 !important;
+}
+
+.bc-control.right {
+    margin-left: 32px !important;
+}
+
+.bc-control.left {
+    margin-right: 32px !important;
+}
+
+.btn1 {
+    padding: 0 15px 0 15px;
+    height: 33px;
+    font-family: CiscoSansTTRegular;
+    font-size: 24px;
+    line-height: 33px;
+    border-style: solid;
+    cursor: pointer;
+    border-radius: 15px;
+    position: relative;
+    color: #ffffff;
+    background-color: #0BABEE;
+    border-color: #0BABEE;
+    letter-spacing: -1px;
+}
+
+.btn2 {
+    padding: 0 6px;
+    height: 43px;
+    font-family: CiscoSansTTRegular;
+    font-size: 18px;
+    line-height: 43px;
+    border-style: solid;
+    cursor: pointer;
+    position: relative;
+    color: #ffffff;
+    background-color: #0BABEE;
+    border-color: #0BABEE;
+    letter-spacing: -1px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+#notif .modal-header {
+    padding: 0 0 0.5rem 0;
+}
+
+#notif .alert-items {
+    padding: 0;
+}
+
+#notif.msg-success .modal-content {
+    background-color: #64A314 !important;
+}
+
+#notif.msg-danger .modal-content {
+    background-color: #E53030 !important;
+}
+
+#notif.msg-info .modal-content {
+    background-color: #007CBB !important;
+}
+
+#notif .modal-content {
+    opacity: 0.9;
+    box-shadow: none !important;
+}
+
+#notif .close clr-icon {
+    fill: #ffffff;
+    width: 30px;
+    height: 30px;
+    margin-right: 0 !important;
+}
+
+#notif .btn {
+    width: 205px !important;
+    margin-right: 0 !important;
+    line-height: 18px !important;
+}
+
+#notif .modal {
+    padding: 0px !important;
+    top: 10px !important;
+    bottom: auto !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+}
+
+#notif .modal:focus {
+    outline: none !important;
+}
+
+#notif .modal-backdrop {
+    display: none;
+}
+
+#notif .alert {
+    border-radius: 0 !important;
+    border: 0px !important
+}
+
+#notif .alert.alert-success {
+    background-color: #64A314 !important;
+}
+
+#notif .alert.alert-danger {
+    background-color: #E53030 !important;
+}
+
+#notif .alert.alert-info {
+    background-color: #007CBB !important;
+}
+
+#notif .alert-icon {
+    width: 30px !important;
+    height: 30px !important;
+    color: #ffffff !important;
+}

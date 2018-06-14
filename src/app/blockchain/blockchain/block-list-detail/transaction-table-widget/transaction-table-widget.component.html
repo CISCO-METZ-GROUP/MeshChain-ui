@@ -1,0 +1,34 @@
+<div fxFlex fxLayout="row" fxLayoutAlign="space-around none">
+  <mat-card class="transaction-table" fxFlex fxLayout="row" fxLayoutAlign="center start" style="overflow-y: auto; height:90%" *ngIf="!loading">
+    <table class="material-table" fxFlexFill>
+      <thead>
+      <tr>
+        <th>Date & Time</th>
+        <th>OEM</th>
+        <th>VNet Design Name</th>
+        <th>Company Name</th>
+        <th>Action</th>
+        <th>Value</th>
+      </tr>
+      </thead>
+      <tbody [ngClass]="{'align-top': !loading && data.length}">
+      <tr *ngFor="let transaction of data" >
+        <td>{{transaction.time}}</td>
+        <td>{{transaction.oem}}</td>
+        <td>{{transaction.designName}}</td>
+        <td>{{transaction.companyName}}</td>
+        <td>{{transaction.action}}</td>
+        <td>{{(transaction.value)}}</td>
+      </tr>
+      <tr>
+        <td colspan="9" *ngIf="!loading && !data.length" style="border-bottom: none">No Data available</td>
+      </tr>
+      </tbody>
+    </table>
+    <button id="business-btn" class="btn1" routerLink="/business">Business Outcome</button>
+  </mat-card>
+  <mat-card fxFlex fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; height:90%" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </mat-card>
+</div>
+
