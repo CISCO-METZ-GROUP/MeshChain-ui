@@ -26,30 +26,26 @@
     height: 100%;
   }
 
-  .material-table {
-
-  }
-
-  .material-table thead tr, .material-table tbody tr {
+.material-table thead tr, .material-table tbody tr {
     border-bottom: 1px solid #979797;
 
     height: 48px;
     padding: 0 24px;
-  }
+}
 
-  .material-table thead tr th {
+.material-table thead tr th {
     color: #ffffff;
     border-bottom: 1px solid #979797;
-  }
+}
 
-  .material-table tbody tr td {
+.material-table tbody tr td {
     border-bottom: 1px solid #979797;
     text-align: center;
-  }
+}
 
-  .align-top {
+.align-top {
     display: table-footer-group;
-  }
+}
 
 .header-controls {
     position: absolute;

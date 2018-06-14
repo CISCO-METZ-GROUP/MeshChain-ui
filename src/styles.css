@@ -257,3 +257,38 @@ app-nodes {
     height: 30px !important;
     color: #ffffff !important;
 }
+
+.mat-sort-header-container {
+    justify-content: center;
+}
+
+.tabs .mat-tab-header {
+    border: 0px !important;
+}
+
+.tabs .mat-ripple-element {
+    display: none;
+}
+
+.tabs .mat-tab-labels {
+    justify-content: space-between !important;
+}
+
+.tabs .mat-tab-label {
+    opacity: 1 !important;
+}
+
+.tabs .mat-tab-label-active {
+    background-color: #292929 !important;
+}
+
+.tabs .mat-tab-label-content {
+    color: #ffffff !important;
+    font-family: CiscoSansTTRegular;
+    font-size: 20px;
+    letter-spacing: -1.5px;
+}
+
+.tabs mat-ink-bar {
+    display: none !important;
+}

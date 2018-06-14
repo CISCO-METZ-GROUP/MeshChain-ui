@@ -12,4 +12,8 @@ export class PublicMeshComponent implements OnInit {
   ngOnInit() {
   }
 
+  public sortData() {
+
+  }
+
 }

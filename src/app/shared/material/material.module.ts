@@ -22,7 +22,8 @@ import {
   MatDialogModule,
   MatRadioModule,
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatTabsModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -53,7 +54,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDialogModule,
     MatRadioModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
@@ -78,7 +80,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDialogModule,
     MatRadioModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule
   ],
   declarations: []
 })

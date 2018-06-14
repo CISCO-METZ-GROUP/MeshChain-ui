@@ -12,4 +12,8 @@ export class EnterpriseMeshComponent implements OnInit {
   ngOnInit() {
   }
 
+  public sortData() {
+
+  }
+
 }
