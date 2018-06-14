@@ -32,6 +32,11 @@
     margin-left: 25px;
 }
 
+.button-text.enterprise, .button-text.public {
+    font-size: 25px;
+    margin-left: 85px;
+}
+
 .button-icon {
     position: absolute;
     top: 48px;

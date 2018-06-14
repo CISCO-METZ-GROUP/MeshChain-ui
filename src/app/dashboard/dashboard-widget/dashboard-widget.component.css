@@ -1,6 +1,7 @@
 .wrapper {
     width: 100%;
     background-color: #242424;
+    display: block !important;
 }
 
 .content {
@@ -45,6 +46,11 @@
     letter-spacing: -2.55px;
     color: #ffffff;
     margin-left: 25px;
+}
+
+.button-text.enterprise, .button-text.public {
+    font-size: 25px;
+    margin-left: 85px;
 }
 
 .button-icon {

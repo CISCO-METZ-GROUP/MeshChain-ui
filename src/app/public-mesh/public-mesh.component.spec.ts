@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Tier1Component } from './tier1.component';
+import { PublicMeshComponent } from './public-mesh.component';
 
-describe('Tier1Component', () => {
-  let component: Tier1Component;
-  let fixture: ComponentFixture<Tier1Component>;
+describe('PublicMeshComponent', () => {
+  let component: PublicMeshComponent;
+  let fixture: ComponentFixture<PublicMeshComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Tier1Component ]
+      declarations: [ PublicMeshComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Tier1Component);
+    fixture = TestBed.createComponent(PublicMeshComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

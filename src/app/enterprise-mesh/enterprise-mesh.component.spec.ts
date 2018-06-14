@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OemComponent } from './oem.component';
+import { EnterpriseMeshComponent } from './enterprise-mesh.component';
 
-describe('OemComponent', () => {
-  let component: OemComponent;
-  let fixture: ComponentFixture<OemComponent>;
+describe('EnterpriseMeshComponent', () => {
+  let component: EnterpriseMeshComponent;
+  let fixture: ComponentFixture<EnterpriseMeshComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OemComponent ]
+      declarations: [ EnterpriseMeshComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OemComponent);
+    fixture = TestBed.createComponent(EnterpriseMeshComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

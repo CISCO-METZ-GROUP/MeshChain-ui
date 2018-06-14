@@ -1,14 +1,14 @@
 <div class="wrapper">
   <div class="content" fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-    <button routerLink="/tier1" routerLinkActive="active" class="dash-button">
+    <button routerLink="/enterprise-mesh" routerLinkActive="active" class="dash-button">
       <div class="triangle-wrap"></div>
       <svg class="button-icon" width="70" height="70">
         <g>
           <circle cx="35" cy="35" r="35" fill="#5AB95C" />
-          <text x="55%" y="70%" text-anchor="middle" fill="#ffffff" class="t1-text">T1</text>
+          <image href="/assets/images/icons/building-solid.svg" width="45" height="45" x="12" y="10"></image>
         </g>
       </svg>
-      <span class="button-text">Tier 1</span>
+      <span class="button-text enterprise">Enterprise Service Mesh</span>
     </button>
     <button routerLink="/blockchain" routerLinkActive="active" class="dash-button" [ngClass]="{'active': isActive}">
       <div class="triangle-wrap"></div>
@@ -20,14 +20,14 @@
       </svg>
       <span class="button-text">Blockchain</span>
     </button>
-    <button routerLink="/oem" routerLinkActive="active" class="dash-button">
+    <button routerLink="/public-mesh" routerLinkActive="active" class="dash-button">
       <svg class="button-icon" width="70" height="70">
         <g>
           <circle cx="35" cy="35" r="35" fill="#E9AB49" />
-          <image href="/assets/images/icons/administrator-line.svg" width="50" height="50" x="12" y="10"></image>
+          <image href="/assets/images/icons/administrator-line.svg" width="45" height="45" x="12" y="10"></image>
         </g>
       </svg>
-      <span class="button-text">OEM</span>
+      <span class="button-text public">Public Cloud Service Mesh</span>
     </button>
   </div>
 </div>
