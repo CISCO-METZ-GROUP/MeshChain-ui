@@ -311,3 +311,29 @@ app-nodes {
     font-size: 18px;
     letter-spacing: -1px;
 }
+
+.mat-input-element {
+    font-size: 17px !important;
+    letter-spacing: -1px;
+    font-family: CiscoSansTTRegular !important;
+    padding-top: 5px !important;
+}
+
+.mat-form-field-label-wrapper {
+    top: -1.5em !important;
+    padding-top: 1em !important;
+}
+
+.mat-form-field-label {
+    font-size: 20px !important;
+    font-family: CiscoSansTTRegular !important;
+    letter-spacing: -1px !important;
+}
+
+.mat-form-field-infix {
+    padding: 0.8em 0 0.3em 0 !important;
+}
+
+.loading .mat-tab-body {
+    overflow: visible !important;
+}

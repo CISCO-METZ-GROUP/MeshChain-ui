@@ -20,6 +20,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnterpriseMeshComponent } from './enterprise-mesh/enterprise-mesh.component';
 import { PublicMeshComponent } from './public-mesh/public-mesh.component';
+import { KubernetesService } from './shared/kubernetes.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     CoreService,
     NotificationService,
     SmartContractService,
-    WebsocketService
+    WebsocketService,
+    KubernetesService
   ],
   bootstrap: [AppComponent]
 })

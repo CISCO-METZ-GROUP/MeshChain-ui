@@ -5,52 +5,112 @@
       <a routerLink="/dashboard"><clr-icon shape="window-close" size="40" class="black"></clr-icon></a>
     </div>
     <div class="tabs">
-      <mat-tab-group>
+      <mat-tab-group (selectedTabChange)="onTabChange($event)">
         <mat-tab label="Pods">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!podsLoading">
             <thead>
             <tr>
-              <th mat-sort-header="timestamp">Date & Time</th>
-              <th mat-sort-header="oem">OEM</th>
-              <th mat-sort-header="designName">VNet Design Name</th>
-              <th mat-sort-header="companyName">Company Name</th>
-              <th mat-sort-header="action">Action</th>
-              <th mat-sort-header="value">Value</th>
-              <th mat-sort-header="blockNumber">Block #</th>
+              <th mat-sort-header="name">Pod Name</th>
+              <th mat-sort-header="namespace">Namespace</th>
+              <th mat-sort-header="ip">IP Address</th>
             </tr>
             </thead>
             <tbody>
-            <!-- <tr *ngFor="let transaction of sortedData"> -->
-            <tr>
-              <td>sgsd</td>
-              <td>agagf</td>
-              <td>xbn</td>
-              <td>sg</td>
-              <td>ge</td>
-              <td>ngfng</td>
-              <td>sgnsf</td>
+            <tr *ngFor="let pod of sortedPods">
+              <td>{{ pod.name }}</td>
+              <td>{{ pod.namespace }}</td>
+              <td>{{ pod.ip }}</td>
             </tr>
-            <!-- <tr>
-              <td colspan="9" *ngIf="!loading && !data.length" style="border-bottom: none">No Data available</td>
-            </tr> -->
+            <tr>
+              <td colspan="3" *ngIf="!sortedPods.length" style="border-bottom: none">No Data available</td>
+            </tr>
             </tbody>
           </table>
+          <mat-spinner *ngIf="podsLoading"></mat-spinner>
         </mat-tab>
+
         <mat-tab label="Service Mesh - DP">
-          <h1>Some more tab content</h1>
-          <p>...</p>
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!smdpLoading">
+            <thead>
+            <tr>
+              <th mat-sort-header="cname">Container Name</th>
+              <th mat-sort-header="sidecar">Sidecar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let smdp of sortedSmdp">
+              <td>{{ smdp.cname }}</td>
+              <td>{{ smdp.sidecar }}</td>
+            </tr>
+            <tr>
+              <td colspan="2" *ngIf="!sortedSmdp.length" style="border-bottom: none">No Data available</td>
+            </tr>
+            </tbody>
+          </table>
+          <mat-spinner *ngIf="smdpLoading"></mat-spinner>
         </mat-tab>
+
         <mat-tab label="Service Mesh - CP">
-          <h1>Some more tab content</h1>
-          <p>...</p>
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!smcpLoading">
+            <thead>
+            <tr>
+              <th mat-sort-header="podName">Pod Name</th>
+              <th mat-sort-header="ip">IP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let smcp of sortedSmcp">
+              <td>{{ smcp.podName }}</td>
+              <td>{{ smcp.ip }}</td>
+            </tr>
+            <tr>
+              <td colspan="2" *ngIf="!sortedSmcp.length" style="border-bottom: none">No Data available</td>
+            </tr>
+            </tbody>
+          </table>
+          <mat-spinner *ngIf="smcpLoading"></mat-spinner>
         </mat-tab>
+
         <mat-tab label="Kubernetes">
-          <h1>Some more tab content</h1>
-          <p>...</p>
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!kubernetesLoading">
+            <thead>
+            <tr>
+              <th mat-sort-header="podName">Pod Name</th>
+              <th mat-sort-header="ip">IP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let kubernet of sortedKubernetes">
+              <td>{{ kubernet.podName }}</td>
+              <td>{{ kubernet.ip }}</td>
+            </tr>
+            <tr>
+              <td colspan="2" *ngIf="!sortedKubernetes.length" style="border-bottom: none">No Data available</td>
+            </tr>
+            </tbody>
+          </table>
+          <mat-spinner *ngIf="kubernetesLoading"></mat-spinner>
         </mat-tab>
+
         <mat-tab label="Zipkin & Blockchain">
-          <h1>Some more tab content</h1>
-          <p>...</p>
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!zbLoading">
+            <thead>
+            <tr>
+              <th mat-sort-header="podName">Pod Name</th>
+              <th mat-sort-header="ip">IP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let zb of sortedZb">
+              <td>{{ zb.podName }}</td>
+              <td>{{ zb.ip }}</td>
+            </tr>
+            <tr>
+              <td colspan="2" *ngIf="!sortedZb.length" style="border-bottom: none">No Data available</td>
+            </tr>
+            </tbody>
+          </table>
+          <mat-spinner *ngIf="zbLoading"></mat-spinner>
         </mat-tab>
       </mat-tab-group>
     </div>
