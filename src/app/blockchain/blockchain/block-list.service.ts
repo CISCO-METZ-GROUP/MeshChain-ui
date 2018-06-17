@@ -26,12 +26,12 @@ export class BlockListService {
 
   public load(): Observable<BlockModel[]> {
     const body = {
-      address: this.smartContractService.getAddress()
+      // address: this.smartContractService.getAddress()
       // address: '0xFf03520393528AbA208fE1A276789d346efac055'
     };
 
     return this.blockListObservable = this.http
-      .post<BlockModel[]>(AppConfig.REST_BASE_URL + '/getBlocks', body)
+      .post<BlockModel[]>(AppConfig.REST_M_ENTERPRISE_BASE_URL + '/get_all_blocks', body)
       .pipe(
         map((res) => this.extractObjectData(res, BlockModel))
       );
@@ -68,7 +68,7 @@ export class BlockListService {
   private extractObjectData<T>(data, type: { new (value: any): T}): Array<T> {
     const arr = [];
     data.forEach(block => {
-      arr.push(new type(block['Block']));
+      arr.push(new type(block));
     });
 
     return arr;

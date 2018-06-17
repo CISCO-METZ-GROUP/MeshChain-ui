@@ -9,19 +9,28 @@ export class BlockModel {
   timestamp: number;
   time: string;
   tx: string[];
+  gasUsed: number;
+  gasLimit: number;
   // transactionList: TransactionModel[];
 
   constructor(data: any) {
-    this.hash = data.current_block_hash;
-    this.height = data.BlockNumber;
+    this.hash = data.hash;
+    this.height = data.number;
     this.miner = data.miner;
     this.nextblockhash = '';
-    this.nonce = data.nonce;
+    this.nonce = 0;
     this.previousblockhash = '';
-    this.size = data.size;
-    this.timestamp = data.time_stamp;
-    this.time = new Date(data.time_stamp * 1000).toLocaleString();
-    this.tx = data.Transactions;
-    // this.transactionList = new Array<TransactionModel>();
+    this.size = 0;
+    this.timestamp = data.timestamp;
+    this.time = new Date(data.timestamp * 1000).toLocaleString();
+
+    if (data.transactionCount) {
+      this.tx = Array(data.transactionCount);
+    } else {
+      this.tx = [];
+    }
+
+    this.gasUsed = data.gasUsed;
+    this.gasLimit = data.gasLimit;
   }
 }

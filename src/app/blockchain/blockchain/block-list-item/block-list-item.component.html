@@ -7,7 +7,7 @@
   </mat-card-header>
   <mat-card-content fxLayout="column">
 
-    <div fxLayout="row" fxLayoutAlign="space-between  none">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
       <mat-form-field fxFlex="35%">
         <input matInput value="{{item.time}}" placeholder="Time" disabled>
       </mat-form-field>
@@ -22,8 +22,17 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between  none">
-      <mat-form-field fxFlex="65%">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <mat-form-field fxFlex="43%">
+        <input matInput value="{{item.gasUsed}}" placeholder="Gas Used" disabled>
+      </mat-form-field>
+      <mat-form-field fxFlex="43%">
+        <input matInput value="{{item.gasLimit}}" placeholder="Gas Limit" disabled>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <mat-form-field fxFlex="100%">
         <input matInput value="{{item.miner}}" placeholder="Miner" disabled>
       </mat-form-field>
     </div>

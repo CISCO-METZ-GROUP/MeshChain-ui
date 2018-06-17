@@ -136,16 +136,19 @@ app-nodes {
 }
 
 .bc-control {
+    position: absolute !important;
     padding: 0 !important;
     min-width: 0 !important;
 }
 
 .bc-control.right {
-    margin-left: 32px !important;
+    right: -17px !important;
+    top: calc(50% - 18.5px) !important;
 }
 
 .bc-control.left {
-    margin-right: 32px !important;
+    left: -17px !important;
+    top: calc(50% - 18.5px) !important;
 }
 
 .btn1 {
