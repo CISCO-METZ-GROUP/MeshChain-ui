@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
+## Prerequisities
+
+- Both the CLI and generated project have dependencies that require Node.js.
+- Google Chrome - running with [disabled web security](https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome).
+    ##### -Command in OSX:
+    open -n -a Google\ Chrome --args --disable-web-security --user-data-dir=/tmp/chrome
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
