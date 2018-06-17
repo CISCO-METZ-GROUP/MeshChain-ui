@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent, Sort } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { PodsModel } from '../shared/models/pods-model';
 import { SmdpModel } from '../shared/models/smdp-model';
@@ -157,8 +157,99 @@ export class PublicMeshComponent implements OnInit, OnDestroy {
     return this.podsLoading || this.smdpLoading || this.smcpLoading || this.kubernetesLoading || this.zbLoading;
   }
 
-  public sortData() {
+  public sortPodsData(sort: Sort) {
+    const data = this.pods.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedPods = data;
+      return;
+    }
 
+    this.sortedPods = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return this.compare(a.name, b.name, isAsc);
+        case 'namespace': return this.compare(a.namespace, b.namespace, isAsc);
+        case 'ip': return this.compare(a.ip, b.ip, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  public sortSMDPData(sort: Sort) {
+    const data = this.smdp.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedSmdp = data;
+      return;
+    }
+
+    this.sortedSmdp = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'cname': return this.compare(a.cname, b.cname, isAsc);
+        case 'sidecar': return this.compare(a.sidecar, b.sidecar, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  public sortSMCPData(sort: Sort) {
+    const data = this.smcp.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedSmcp = data;
+      return;
+    }
+
+    this.sortedSmcp = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'podName': return this.compare(a.podName, b.podName, isAsc);
+        case 'ip': return this.compare(a.ip, b.ip, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  public sortKubernetesData(sort: Sort) {
+    const data = this.kubernetes.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedKubernetes = data;
+      return;
+    }
+
+    this.sortedKubernetes = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'podName': return this.compare(a.podName, b.podName, isAsc);
+        case 'ip': return this.compare(a.ip, b.ip, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  public sortZBData(sort: Sort) {
+    const data = this.zb.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedZb = data;
+      return;
+    }
+
+    this.sortedZb = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'podName': return this.compare(a.podName, b.podName, isAsc);
+        case 'ip': return this.compare(a.ip, b.ip, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  private compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
 }

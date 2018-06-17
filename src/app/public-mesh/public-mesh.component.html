@@ -7,7 +7,7 @@
     <div class="tabs">
       <mat-tab-group (selectedTabChange)="onTabChange($event)" [ngClass]="{'loading': isLoading()}">
         <mat-tab label="Pods">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!podsLoading">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortPodsData($event)" *ngIf="!podsLoading">
             <thead>
             <tr>
               <th mat-sort-header="name">Pod Name</th>
@@ -30,7 +30,7 @@
         </mat-tab>
 
         <mat-tab label="Service Mesh - DP">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!smdpLoading">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortSMDPData($event)" *ngIf="!smdpLoading">
             <thead>
             <tr>
               <th mat-sort-header="cname">Container Name</th>
@@ -51,7 +51,7 @@
         </mat-tab>
 
         <mat-tab label="Service Mesh - CP">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!smcpLoading">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortSMCPData($event)" *ngIf="!smcpLoading">
             <thead>
             <tr>
               <th mat-sort-header="podName">Pod Name</th>
@@ -72,7 +72,7 @@
         </mat-tab>
 
         <mat-tab label="Kubernetes">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!kubernetesLoading">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortKubernetesData($event)" *ngIf="!kubernetesLoading">
             <thead>
             <tr>
               <th mat-sort-header="podName">Pod Name</th>
@@ -93,7 +93,7 @@
         </mat-tab>
 
         <mat-tab label="Zipkin & Blockchain">
-          <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!zbLoading">
+          <table class="material-table" fxFlexFill matSort (matSortChange)="sortZBData($event)" *ngIf="!zbLoading">
             <thead>
             <tr>
               <th mat-sort-header="podName">Pod Name</th>
