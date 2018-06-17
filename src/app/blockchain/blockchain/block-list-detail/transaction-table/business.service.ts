@@ -4,6 +4,7 @@ import { TransactionModel } from '../../../shared/models/transaction-model';
 import { AppConfig } from '../../../../app-config';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { SmartContractService } from '../../../../smart-contract/smart-contract.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ import { Observable } from 'rxjs';
 export class BusinessService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private smartContractService: SmartContractService
   ) { }
 
   public load(): Observable<TransactionModel[]> {
     const body = {
-      address: AppConfig.ADDRESS,
+      address: this.smartContractService.getAddress(),
     };
 
     return this.http.post(AppConfig.REST_BASE_URL + '/buisnessLogs', body).pipe(

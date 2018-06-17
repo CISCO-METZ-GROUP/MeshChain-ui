@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { BlockModel } from '../shared/models/block-model';
 import { CoreService } from '../../shared/core.service';
 import { AppConfig } from '../../app-config';
+import { SmartContractService } from '../../smart-contract/smart-contract.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,14 @@ export class BlockListService {
 
   constructor(
     private http: HttpClient,
-    private coreService: CoreService
+    private coreService: CoreService,
+    private smartContractService: SmartContractService
   ) { }
 
   public load(): Observable<BlockModel[]> {
     const body = {
-      address: AppConfig.ADDRESS
+      address: this.smartContractService.getAddress()
+      // address: '0xFf03520393528AbA208fE1A276789d346efac055'
     };
 
     return this.blockListObservable = this.http

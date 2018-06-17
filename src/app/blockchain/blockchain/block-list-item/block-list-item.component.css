@@ -5,6 +5,8 @@
 h3 {
     color: #ffffff !important;
     font-family: CiscoSansTTBold;
+    letter-spacing: -1px;
+    font-size: 26px !important;
 }
 
 input, label {

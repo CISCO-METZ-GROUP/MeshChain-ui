@@ -312,11 +312,23 @@ app-nodes {
     letter-spacing: -1px;
 }
 
+#smart-contract-code .modal-dialog {
+    width: 70% !important;
+}
+
+pre {
+    max-height: 25rem;
+}
+
 .mat-input-element {
-    font-size: 17px !important;
-    letter-spacing: -1px;
+    font-size: 20px !important;
+    letter-spacing: -1.5px;
     font-family: CiscoSansTTRegular !important;
     padding-top: 5px !important;
+}
+
+.mat-form-field {
+    margin-top: 40px !important;
 }
 
 .mat-form-field-label-wrapper {
@@ -325,9 +337,9 @@ app-nodes {
 }
 
 .mat-form-field-label {
-    font-size: 20px !important;
+    font-size: 28px !important;
     font-family: CiscoSansTTRegular !important;
-    letter-spacing: -1px !important;
+    letter-spacing: -1.5px !important;
 }
 
 .mat-form-field-infix {

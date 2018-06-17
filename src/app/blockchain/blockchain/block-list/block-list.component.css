@@ -8,3 +8,21 @@
     top: 0;
     right: 0;
 }
+
+.bc-tile-wrapper {
+    margin-top: 30px;
+}
+
+.block-tiles {
+    padding: 50px 0;
+}
+
+.block-tile {
+    display: inline-block;
+    max-width: 45%;
+    margin: 0 30px;
+}
+
+mat-spinner {
+    margin: auto;
+}

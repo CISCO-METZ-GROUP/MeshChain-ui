@@ -1,27 +1,30 @@
 :host {
     width: 100%;
     height: 100%;
-  }
-
-  .material-table {
-
+    margin-top: 30px;
   }
 
   .material-table thead tr, .material-table tbody tr {
     border-bottom: 1px solid #979797;
-
     height: 48px;
     padding: 0 24px;
+    vertical-align: middle;
   }
 
   .material-table thead tr th {
     color: #ffffff;
     border-bottom: 1px solid #979797;
+    font-size: 22px;
+    font-family: CiscoSansTTBold;
+    letter-spacing: -1px;
   }
 
   .material-table tbody tr td {
     border-bottom: 1px solid #979797;
     text-align: center;
+    font-size: 18px;
+    font-family: CiscoSansTTRegular;
+    letter-spacing: -1px;
   }
 
   .align-top {
@@ -32,4 +35,8 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
+}
+
+.widget-wrapper {
+  padding-bottom: 30px;
 }
