@@ -153,6 +153,10 @@ export class PublicMeshComponent implements OnInit, OnDestroy {
     }
   }
 
+  public isLoading(): boolean {
+    return this.podsLoading || this.smdpLoading || this.smcpLoading || this.kubernetesLoading || this.zbLoading;
+  }
+
   public sortData() {
 
   }

@@ -74,6 +74,7 @@ table {
     right: 7%;
 }
 
-mat-spinner circle {
-    overflow: visible !important;
+
+mat-spinner {
+    margin: auto !important;
 }

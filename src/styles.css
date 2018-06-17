@@ -349,6 +349,11 @@ pre {
     padding: 0.8em 0 0.3em 0 !important;
 }
 
-.loading .mat-tab-body {
-    overflow: visible !important;
+
+.tabs .loading .mat-tab-body {
+    overflow: hidden !important;
+}
+
+.tabs .loading .mat-tab-body-content {
+    overflow: hidden !important;
 }

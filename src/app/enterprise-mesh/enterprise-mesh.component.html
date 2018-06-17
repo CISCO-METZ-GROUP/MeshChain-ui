@@ -5,7 +5,7 @@
       <a routerLink="/dashboard"><clr-icon shape="window-close" size="40" class="black"></clr-icon></a>
     </div>
     <div class="tabs">
-      <mat-tab-group (selectedTabChange)="onTabChange($event)">
+      <mat-tab-group (selectedTabChange)="onTabChange($event)" [ngClass]="{'loading': isLoading()}">
         <mat-tab label="Pods">
           <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)" *ngIf="!podsLoading">
             <thead>
@@ -21,8 +21,8 @@
               <td>{{ pod.namespace }}</td>
               <td>{{ pod.ip }}</td>
             </tr>
-            <tr>
-              <td colspan="3" *ngIf="!sortedPods.length" style="border-bottom: none">No Data available</td>
+            <tr *ngIf="!sortedPods.length">
+              <td colspan="3" style="border-bottom: none">No Data available</td>
             </tr>
             </tbody>
           </table>
@@ -42,8 +42,8 @@
               <td>{{ smdp.cname }}</td>
               <td>{{ smdp.sidecar }}</td>
             </tr>
-            <tr>
-              <td colspan="2" *ngIf="!sortedSmdp.length" style="border-bottom: none">No Data available</td>
+            <tr *ngIf="!sortedSmdp.length">
+              <td colspan="2" style="border-bottom: none">No Data available</td>
             </tr>
             </tbody>
           </table>
@@ -63,8 +63,8 @@
               <td>{{ smcp.podName }}</td>
               <td>{{ smcp.ip }}</td>
             </tr>
-            <tr>
-              <td colspan="2" *ngIf="!sortedSmcp.length" style="border-bottom: none">No Data available</td>
+            <tr *ngIf="!sortedSmcp.length">
+              <td colspan="2" style="border-bottom: none">No Data available</td>
             </tr>
             </tbody>
           </table>
@@ -84,8 +84,8 @@
               <td>{{ kubernet.podName }}</td>
               <td>{{ kubernet.ip }}</td>
             </tr>
-            <tr>
-              <td colspan="2" *ngIf="!sortedKubernetes.length" style="border-bottom: none">No Data available</td>
+            <tr *ngIf="!sortedKubernetes.length">
+              <td colspan="2" style="border-bottom: none">No Data available</td>
             </tr>
             </tbody>
           </table>
@@ -105,8 +105,8 @@
               <td>{{ zb.podName }}</td>
               <td>{{ zb.ip }}</td>
             </tr>
-            <tr>
-              <td colspan="2" *ngIf="!sortedZb.length" style="border-bottom: none">No Data available</td>
+            <tr *ngIf="!sortedZb.length">
+              <td colspan="2" style="border-bottom: none">No Data available</td>
             </tr>
             </tbody>
           </table>
@@ -116,10 +116,10 @@
     </div>
     <div class="switch">
       <mat-slide-toggle
-        class="example-margin"
-        color="primary">
-      Trace Controls
-    </mat-slide-toggle>
+          class="example-margin"
+          color="primary">
+        Trace Controls
+      </mat-slide-toggle>
     </div>
   </div>
 </div>
