@@ -15,12 +15,13 @@ import { BusinessService } from './blockchain/block-list-detail/transaction-tabl
 
 import { SharedModule } from '../shared/shared.module';
 import { TransactionTableComponent } from './blockchain/block-list-detail/transaction-table/transaction-table.component';
+// tslint:disable-next-line:max-line-length
 import { TransactionTableWidgetComponent } from './blockchain/block-list-detail/transaction-table-widget/transaction-table-widget.component';
 
 const bcRoutes: Routes = [
   { path: 'blockchain', component: BlockchainComponent },
   { path: 'block/:id', component: BlockListDetailComponent },
-  { path: 'business', component: TransactionTableComponent}
+  { path: 'traces', component: TransactionTableComponent}
 ];
 
 @NgModule({

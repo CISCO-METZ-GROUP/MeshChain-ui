@@ -18,10 +18,12 @@ export class BusinessService {
 
   public load(): Observable<TransactionModel[]> {
     const body = {
-      address: this.smartContractService.getAddress(),
+      fromBlock: 0,
+      toBlock: 'latest',
+      address: AppConfig.ADDRESS
     };
 
-    return this.http.post(AppConfig.REST_BASE_URL + '/buisnessLogs', body).pipe(
+    return this.http.post(AppConfig.REST_M_ENTERPRISE_BASE_URL + '/get_all_traces', body).pipe(
       map(res => this.extractObjectData(res, TransactionModel))
     );
   }
@@ -30,7 +32,16 @@ export class BusinessService {
     const arr = [];
 
     data.forEach(item => {
-      arr.push(new type(item));
+      item.metadata = JSON.parse(item.metadata);
+
+      if (item.metadata && item.metadata.length) {
+        item.metadata.forEach(metadata => {
+          metadata.name = item.name;
+          metadata.blockNo = item.blockNo;
+
+          arr.push(new TransactionModel(metadata));
+        });
+      }
     });
 
     return arr;

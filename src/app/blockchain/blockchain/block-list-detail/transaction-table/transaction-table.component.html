@@ -4,29 +4,27 @@
       <div class="header-controls">
         <a routerLink="/dashboard"><img src="/assets/images/icons/window-close-line.svg" width="40" height="40"></a>
       </div>
-      <div fxflex fxLayout="row" class="title text-center" fxLayoutAlign="space-around none">Business Outcome</div>
+      <div fxflex fxLayout="row" class="title text-center" fxLayoutAlign="space-around none">Trace Log</div>
       <mat-card class="transaction-table" fxFlex fxLayout="row" fxLayoutAlign="center start" style="overflow-y: auto; height:90%" *ngIf="!loading">
         <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)">
           <thead>
           <tr>
             <th mat-sort-header="timestamp">Date & Time</th>
-            <th mat-sort-header="oem">OEM</th>
-            <th mat-sort-header="designName">VNet Design Name</th>
-            <th mat-sort-header="companyName">Company Name</th>
-            <th mat-sort-header="action">Action</th>
-            <th mat-sort-header="value">Value</th>
-            <th mat-sort-header="blockNumber">Block #</th>
+            <th mat-sort-header="traceId">Trace ID</th>
+            <th mat-sort-header="serviceMesh">Service Mesh</th>
+            <th mat-sort-header="numOfServices"># of services</th>
+            <th mat-sort-header="services">Services</th>
+            <th mat-sort-header="duration">Duration</th>
           </tr>
           </thead>
           <tbody [ngClass]="{'align-top': !loading && data.length}">
           <tr *ngFor="let transaction of sortedData" >
             <td>{{transaction.time}}</td>
-            <td>{{transaction.oem}}</td>
-            <td>{{transaction.designName}}</td>
-            <td>{{transaction.companyName}}</td>
-            <td>{{transaction.action}}</td>
-            <td>{{(transaction.value)}}</td>
-            <td>{{(transaction.blockNumber)}}</td>
+            <td>{{transaction.traceId}}</td>
+            <td>{{transaction.serviceMesh}}</td>
+            <td>{{transaction.numOfServices}}</td>
+            <td>{{transaction.services}}</td>
+            <td>{{(transaction.duration)}} ms</td>
           </tr>
           <tr>
             <td colspan="9" *ngIf="!loading && !data.length" style="border-bottom: none">No Data available</td>

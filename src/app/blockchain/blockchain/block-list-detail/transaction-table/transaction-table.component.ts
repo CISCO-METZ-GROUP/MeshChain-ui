@@ -47,12 +47,11 @@ export class TransactionTableComponent implements OnInit, OnDestroy {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'timestamp': return this.compare(+a.timestamp, +b.timestamp, isAsc);
-        case 'oem': return this.compare(a.oem, b.oem, isAsc);
-        case 'designName': return this.compare(a.designName, b.designName, isAsc);
-        case 'companyName': return this.compare(a.companyName, b.companyName, isAsc);
-        case 'action': return this.compare(a.action, b.action, isAsc);
-        case 'value': return this.compare(a.value, b.value, isAsc);
-        case 'blockNumber': return this.compare(+a.blockNumber, +b.blockNumber, isAsc);
+        case 'traceId': return this.compare(a.traceId, b.traceId, isAsc);
+        case 'serviceMesh': return this.compare(a.serviceMesh, b.serviceMesh, isAsc);
+        case 'numOfServices': return this.compare(+a.numOfServices, +b.numOfServices, isAsc);
+        case 'services': return this.compare(a.services, b.services, isAsc);
+        case 'duration': return this.compare(+a.duration, +b.duration, isAsc);
 
         default: return 0;
       }
