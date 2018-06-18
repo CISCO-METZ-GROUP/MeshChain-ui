@@ -6,6 +6,12 @@ import { PodsModel } from './models/pods-model';
 import { Observable } from 'rxjs';
 import { SmdpModel } from './models/smdp-model';
 import { SmcpModel } from './models/smcp-model';
+import { SmartContractService } from '../smart-contract/smart-contract.service';
+
+interface ZipkinPostType {
+  name: string;
+  address?: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +19,8 @@ import { SmcpModel } from './models/smcp-model';
 export class KubernetesService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private smartContractService: SmartContractService
   ) { }
 
   public loadPods(isPublic: boolean): Observable<PodsModel[]> {
@@ -106,13 +113,16 @@ export class KubernetesService {
 
   public startZipkinPoll(isPublic: boolean) {
     const restUrl = isPublic ? AppConfig.REST_M_PUBLIC_BASE_URL : AppConfig.REST_M_ENTERPRISE_BASE_URL;
-    const address = isPublic ? '0x6251581Af32bb2169A02d84f2FEB80F4E632b750' : AppConfig.ADDRESS_E;
+    const address = isPublic ? this.smartContractService.getAddress(true) : this.smartContractService.getAddress(false);
     const name = isPublic ? 'trace1' : 'trace123';
 
-    const body = {
-      name: name,
-      address: address
+    const body: ZipkinPostType = {
+      name: name
     };
+
+    if (address) {
+      body.address = address;
+    }
 
     this.http.post(restUrl + '/zipkin_poll_start', body).subscribe(
       res => {},

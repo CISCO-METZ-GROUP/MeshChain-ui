@@ -4,7 +4,7 @@
       <div class="header-controls">
         <a routerLink="/dashboard"><img src="/assets/images/icons/window-close-line.svg" width="40" height="40"></a>
       </div>
-      <div fxflex fxLayout="row" class="title text-center" fxLayoutAlign="space-around none">Trace Log</div>
+      <div fxflex fxLayout="row" class="title text-center" fxLayoutAlign="space-around none">Detail of Block #{{id}}</div>
       <mat-card class="transaction-table" fxFlex fxLayout="row" fxLayoutAlign="center start" style="overflow-y: auto; height:90%" *ngIf="!loading">
         <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)">
           <thead>

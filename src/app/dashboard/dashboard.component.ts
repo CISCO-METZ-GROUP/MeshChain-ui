@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SmartContractService } from '../smart-contract/smart-contract.service';
 
 @Component({
@@ -7,7 +6,7 @@ import { SmartContractService } from '../smart-contract/smart-contract.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   isSplashScreenOpened: boolean;
 
@@ -16,7 +15,11 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isSplashScreenOpened = !this.smartContractService.contractDeployed;
+    this.isSplashScreenOpened = this.smartContractService.splashOpen;
+  }
+
+  ngOnDestroy() {
+    this.smartContractService.splashOpen = false;
   }
 
   public deploySmartContract() {
