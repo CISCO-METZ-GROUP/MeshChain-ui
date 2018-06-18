@@ -14,7 +14,7 @@ export class TransactionModel {
     this.blockNumber = data.blockNo;
     // this.name = data.name;
     this.timestamp = data.timestamp;
-    this.time = new Date(this.timestamp).toLocaleString();
+    this.time = new Date(this.timestamp / 1000).toLocaleString();
     this.traceId = data.traceID;
     this.id = data.ID;
     this.serviceMesh = data.name.split(' ')[0];
