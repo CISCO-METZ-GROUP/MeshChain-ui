@@ -104,4 +104,32 @@ export class KubernetesService {
     );
   }
 
+  public startZipkinPoll(isPublic: boolean) {
+    const restUrl = isPublic ? AppConfig.REST_M_PUBLIC_BASE_URL : AppConfig.REST_M_ENTERPRISE_BASE_URL;
+
+    const body = {
+      name: AppConfig.TRACE_NAME,
+      address: AppConfig.ADDRESS
+    };
+
+    this.http.post(restUrl + '/zipkin_poll_start', body).subscribe(
+      res => {},
+      error => {}
+    );
+  }
+
+  public stopZipkinPoll(isPublic: boolean) {
+    const restUrl = isPublic ? AppConfig.REST_M_PUBLIC_BASE_URL : AppConfig.REST_M_ENTERPRISE_BASE_URL;
+
+    const body = {
+      name: AppConfig.TRACE_NAME,
+      address: AppConfig.ADDRESS
+    };
+
+    this.http.post(restUrl + '/zipkin_poll_stop', body).subscribe(
+      res => {},
+      error => {}
+    );
+  }
+
 }

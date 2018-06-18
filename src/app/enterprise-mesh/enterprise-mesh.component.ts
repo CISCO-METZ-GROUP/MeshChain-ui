@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { KubernetesService } from '../shared/kubernetes.service';
-import { MatTabChangeEvent, Sort } from '@angular/material';
+import { MatTabChangeEvent, Sort, MatSlideToggleChange } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { PodsModel } from '../shared/models/pods-model';
 import { SmdpModel } from '../shared/models/smdp-model';
@@ -38,20 +38,21 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
   public zbLoading: boolean;
   private zbSubscription: Subscription;
 
+  private tabIndex: number;
+  private loadPotsForce: boolean;
+  private loadSmdpForce: boolean;
+  private loadSmcpForce: boolean;
+  private loadKubernetesForce: boolean;
+  private loadZbForce: boolean;
+
   constructor(
     private kubernetesService: KubernetesService
   ) { }
 
   ngOnInit() {
-    this.podsLoading = true;
-
-    this.podsSubscription = this.kubernetesService.loadPods(false).subscribe(
-      res => {
-        this.pods = res;
-        this.sortedPods = res.slice();
-        this.podsLoading = false;
-      }
-    );
+    this.tabIndex = 0;
+    this.setForce(false);
+    this.loadPods();
   }
 
   ngOnDestroy() {
@@ -76,11 +77,36 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
     }
   }
 
-  private loadSMDP() {
-    if (this.smdpSubscription) {
+  private setForce(state: boolean) {
+    this.loadPotsForce = state;
+    this.loadSmdpForce = state;
+    this.loadSmcpForce = state;
+    this.loadKubernetesForce = state;
+    this.loadZbForce = state;
+  }
+
+  private loadPods() {
+    if (this.podsSubscription && !this.loadPotsForce) {
       return;
     }
 
+    this.loadPotsForce = false;
+    this.podsLoading = true;
+    this.podsSubscription = this.kubernetesService.loadPods(false).subscribe(
+      res => {
+        this.pods = res;
+        this.sortedPods = res.slice();
+        this.podsLoading = false;
+      }
+    );
+  }
+
+  private loadSMDP() {
+    if (this.smdpSubscription && !this.loadSmdpForce) {
+      return;
+    }
+
+    this.loadSmdpForce = false;
     this.smdpLoading = true;
     this.smdpSubscription = this.kubernetesService.loadSMDP(false).subscribe(
       res => {
@@ -92,10 +118,11 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
   }
 
   private loadSMCP() {
-    if (this.smcpSubscription) {
+    if (this.smcpSubscription && !this.loadSmcpForce) {
       return;
     }
 
+    this.loadSmcpForce = false;
     this.smcpLoading = true;
     this.smcpSubscription = this.kubernetesService.loadSMCP(false).subscribe(
       res => {
@@ -107,10 +134,11 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
   }
 
   private loadKubernetes() {
-    if (this.kubernetesSubscription) {
+    if (this.kubernetesSubscription && !this.loadKubernetesForce) {
       return;
     }
 
+    this.loadKubernetesForce = false;
     this.kubernetesLoading = true;
     this.kubernetesSubscription = this.kubernetesService.loadKubernetes(false).subscribe(
       res => {
@@ -122,10 +150,11 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
   }
 
   private loadZB() {
-    if (this.zbSubscription) {
+    if (this.zbSubscription && !this.loadZbForce) {
       return;
     }
 
+    this.loadZbForce = false;
     this.zbLoading = true;
     this.zbSubscription = this.kubernetesService.loadKubernetes(false).subscribe(
       res => {
@@ -137,7 +166,12 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
   }
 
   public onTabChange(e: MatTabChangeEvent) {
+    this.tabIndex = e.index;
+
     switch (e.index) {
+      case 0:
+        this.loadPods();
+        break;
       case 1:
         this.loadSMDP();
         break;
@@ -250,6 +284,37 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
 
   private compare(a, b, isAsc) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  public onSliderToggle(e: MatSlideToggleChange) {
+    if (e.checked) {
+      this.kubernetesService.startZipkinPoll(false);
+    } else {
+      this.kubernetesService.stopZipkinPoll(false);
+    }
+
+    this.setForce(true);
+    this.loadActualData();
+  }
+
+  private loadActualData() {
+    switch (this.tabIndex) {
+      case 0:
+        this.loadPods();
+        break;
+      case 1:
+        this.loadSMDP();
+        break;
+      case 2:
+        this.loadSMCP();
+        break;
+      case 3:
+        this.loadKubernetes();
+        break;
+      case 4:
+        this.loadZB();
+        break;
+    }
   }
 
 }

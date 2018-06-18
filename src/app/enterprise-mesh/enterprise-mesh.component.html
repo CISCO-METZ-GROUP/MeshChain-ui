@@ -117,7 +117,8 @@
     <div class="switch">
       <mat-slide-toggle
           class="example-margin"
-          color="primary">
+          color="primary"
+          (change)="onSliderToggle($event)">
         Trace Controls
       </mat-slide-toggle>
     </div>
