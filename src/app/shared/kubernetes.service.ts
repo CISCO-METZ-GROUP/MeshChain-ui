@@ -52,12 +52,14 @@ export class KubernetesService {
     const arr: SmdpModel[] = [];
 
     data.items.forEach(item => {
-      const obj = {
-        cname: item.spec.containers[0].name,
-        sidecar: item.status.podIP
-      };
+      if (item.spec.containers.length > 1) {
+        const obj = {
+          cname: item.spec.containers[0].name,
+          sidecar: item.spec.containers[0].name + ' sidecar'
+        };
 
-      arr.push(new SmdpModel(obj));
+        arr.push(new SmdpModel(obj));
+      }
     });
 
     return arr;
