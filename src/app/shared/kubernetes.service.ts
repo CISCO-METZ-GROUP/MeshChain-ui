@@ -106,10 +106,12 @@ export class KubernetesService {
 
   public startZipkinPoll(isPublic: boolean) {
     const restUrl = isPublic ? AppConfig.REST_M_PUBLIC_BASE_URL : AppConfig.REST_M_ENTERPRISE_BASE_URL;
+    const address = isPublic ? '0x6251581Af32bb2169A02d84f2FEB80F4E632b750' : AppConfig.ADDRESS_E;
+    const name = isPublic ? 'trace1' : 'trace123';
 
     const body = {
-      name: AppConfig.TRACE_NAME,
-      address: AppConfig.ADDRESS_E
+      name: name,
+      address: address
     };
 
     this.http.post(restUrl + '/zipkin_poll_start', body).subscribe(
@@ -121,10 +123,7 @@ export class KubernetesService {
   public stopZipkinPoll(isPublic: boolean) {
     const restUrl = isPublic ? AppConfig.REST_M_PUBLIC_BASE_URL : AppConfig.REST_M_ENTERPRISE_BASE_URL;
 
-    const body = {
-      name: AppConfig.TRACE_NAME,
-      address: AppConfig.ADDRESS_E
-    };
+    const body = {};
 
     this.http.post(restUrl + '/zipkin_poll_stop', body).subscribe(
       res => {},
