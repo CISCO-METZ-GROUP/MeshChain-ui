@@ -18,18 +18,33 @@ export class BlockListDetailService {
 
   public load(blockNumber: number): Observable<TransactionModel[]> {
     const body = {
-      address: this.smartContractService.getAddress(),
-      blockNumber: blockNumber
+      address: AppConfig.ADDRESS_E,
+      blockNo: blockNumber
     };
 
-    return this.http.post(AppConfig.REST_BASE_URL + '/getSelectedBlock', body).pipe(
-      map(res => this.extractObjectData(res, TransactionModel))
+    return this.http.post(AppConfig.REST_M_ENTERPRISE_BASE_URL + '/get_transactions_in_block', body).pipe(
+      map(res => this.extractObjectData(res, TransactionModel, blockNumber))
     );
   }
 
-  private extractObjectData<T>(data, type: { new (value: any): T}): Array<T> {
+  private extractObjectData<T>(data, type: { new (value: any): T}, blockNumber: number): Array<T> {
     const arr = [];
-    arr.push(new type(data));
+    // console.log(data);
+
+    data.forEach(item => {
+      if (item.newTrace) {
+        const traces = JSON.parse(item.newTrace.metadata);
+
+        traces.forEach(t => {
+          t.name = item.newTrace.name;
+          t.blockNo = blockNumber;
+
+          arr.push(new TransactionModel(t));
+        });
+      }
+    });
+
+    // arr.push(new type(data));
 
     return arr;
   }

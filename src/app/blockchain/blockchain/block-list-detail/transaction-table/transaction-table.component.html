@@ -26,8 +26,8 @@
             <td>{{transaction.services}}</td>
             <td>{{(transaction.duration)}} ms</td>
           </tr>
-          <tr>
-            <td colspan="9" *ngIf="!loading && !data.length" style="border-bottom: none">No Data available</td>
+          <tr *ngIf="!loading && !data.length">
+            <td colspan="6" style="border-bottom: none">No Data available</td>
           </tr>
           </tbody>
         </table>
@@ -36,5 +36,4 @@
         <mat-spinner></mat-spinner>
       </mat-card>
     </div>
-
 </div>

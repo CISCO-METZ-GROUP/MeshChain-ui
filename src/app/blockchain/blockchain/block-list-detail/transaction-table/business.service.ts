@@ -20,7 +20,7 @@ export class BusinessService {
     const body = {
       fromBlock: 0,
       toBlock: 'latest',
-      address: AppConfig.ADDRESS
+      address: AppConfig.ADDRESS_E
     };
 
     return this.http.post(AppConfig.REST_M_ENTERPRISE_BASE_URL + '/get_all_traces', body).pipe(

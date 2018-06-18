@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { BlockListDetailService } from './block-list-detail.service';
 import { TransactionModel } from '../../shared/models/transaction-model';
+import { Sort } from '@angular/material';
 
 @Component({
   selector: 'app-block-list-detail',
@@ -17,6 +18,7 @@ export class BlockListDetailComponent implements OnInit, OnDestroy {
 
   item: BlockModel;
   transactions: TransactionModel[];
+  transactionsSorted: TransactionModel[];
   loading: boolean;
   loadingTransactions: boolean;
   id: number;
@@ -87,6 +89,7 @@ export class BlockListDetailComponent implements OnInit, OnDestroy {
     this.transactionListSubscription = this.blockListDetailService.load(this.id).subscribe(
       tr => {
         this.transactions = tr;
+        this.transactionsSorted = tr;
         this.loadingTransactions = false;
       }
     );
@@ -109,4 +112,31 @@ export class BlockListDetailComponent implements OnInit, OnDestroy {
 
 
   }
+
+  sortData(sort: Sort) {
+    const data = this.transactions.slice();
+    if (!sort.active || sort.direction === '') {
+      this.transactionsSorted = data;
+      return;
+    }
+
+    this.transactionsSorted = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'timestamp': return this.compare(+a.timestamp, +b.timestamp, isAsc);
+        case 'traceId': return this.compare(a.traceId, b.traceId, isAsc);
+        case 'serviceMesh': return this.compare(a.serviceMesh, b.serviceMesh, isAsc);
+        case 'numOfServices': return this.compare(+a.numOfServices, +b.numOfServices, isAsc);
+        case 'services': return this.compare(a.services, b.services, isAsc);
+        case 'duration': return this.compare(+a.duration, +b.duration, isAsc);
+
+        default: return 0;
+      }
+    });
+  }
+
+  private compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
 }

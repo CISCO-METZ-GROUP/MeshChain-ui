@@ -109,7 +109,7 @@ export class KubernetesService {
 
     const body = {
       name: AppConfig.TRACE_NAME,
-      address: AppConfig.ADDRESS
+      address: AppConfig.ADDRESS_E
     };
 
     this.http.post(restUrl + '/zipkin_poll_start', body).subscribe(
@@ -123,7 +123,7 @@ export class KubernetesService {
 
     const body = {
       name: AppConfig.TRACE_NAME,
-      address: AppConfig.ADDRESS
+      address: AppConfig.ADDRESS_E
     };
 
     this.http.post(restUrl + '/zipkin_poll_stop', body).subscribe(

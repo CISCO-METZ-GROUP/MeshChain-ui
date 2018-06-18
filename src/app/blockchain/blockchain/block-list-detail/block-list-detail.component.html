@@ -1,79 +1,40 @@
 <app-dashboard-widget></app-dashboard-widget>
 <div class="wrapper" id="blockchain">
-  <div fxFlex fxLayout="column" fxLayoutAlign="center none">
-    <div fxFlex="80" fxLayout="row" fxLayoutAlign="center none">
-      <mat-card fxFlex="80" fxLayout="column" *ngIf="!loading">
-        <div class="header-controls">
-          <a routerLink="/dashboard"><img src="/assets/images/icons/window-close-line.svg" width="40" height="40"></a>
-        </div>
-        <mat-card-header fxFlex="20">
-          <mat-card-title fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
-            <h3 fxFlex fxLayout="row" fxLayoutAlign="center center">Detail of Block #{{item.height}}</h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content fxFlex fxLayout="column">
-
-          <div fxFlex="8" fxLayout="row" fxLayoutAlign="space-between none">
-            <div fxFlex="49" fxLayout="column" fxLayoutAlign="none">
-              <div fxFlex fxLayout="row" fxLayoutAlign="space-between none">
-                <mat-form-field fxFlex="31%">
-                  <input matInput value="{{item.time}}" placeholder="Time" disabled>
-                </mat-form-field>
-                <mat-form-field fxFlex="31%">
-                  <input matInput value="{{item.nonce}}" placeholder="Nonce" disabled>
-                </mat-form-field>
-              </div>
-            </div>
-            <div fxFlex="49" fxLayout="column" fxLayoutAlign="none">
-              <div fxFlex fxLayout="row" fxLayoutAlign="space-between none">
-                <mat-form-field fxFlex="50%">
-                  <input matInput value="{{item.size}}" placeholder="Size" disabled>
-                </mat-form-field>
-                <mat-form-field fxFlex="23">
-                  <input matInput value="{{item.tx.length}}" placeholder="Transactions" disabled>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-
-          <div fxFlex="8" fxLayout="row" fxLayoutAlign="space-between none">
-            <div fxFlex="49" fxLayout="column" fxLayoutAlign="none">
-              <mat-form-field>
-                <input matInput value="{{item.hash}}" placeholder="Current Block Hash" disabled>
-              </mat-form-field>
-            </div>
-            <div fxFlex="49" fxLayout="column" fxLayoutAlign="none">
-              <div fxFlex fxLayout="row" fxLayoutAlign="space-between none">
-                <mat-form-field fxFlex="50%">
-                  <input matInput value="{{item.miner}}" placeholder="Miner" disabled>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-
-          <div fxFlex="8" fxLayout="row"></div>
-
-          <div fxFlex fxLayout="column" fxLayoutAlign="none">
-            <app-transaction-table-widget [data]="transactions" [loading]="loadingTransactions"></app-transaction-table-widget>
-          </div>
-
-        </mat-card-content>
+  <div fxflex="80" fxLayout="column" fxLayoutAlign="center" class="content">
+      <div class="header-controls">
+        <a routerLink="/dashboard"><img src="/assets/images/icons/window-close-line.svg" width="40" height="40"></a>
+      </div>
+      <div fxflex fxLayout="row" class="title text-center" fxLayoutAlign="space-around none">Trace Log</div>
+      <mat-card class="transaction-table" fxFlex fxLayout="row" fxLayoutAlign="center start" style="overflow-y: auto; height:90%" *ngIf="!loading">
+        <table class="material-table" fxFlexFill matSort (matSortChange)="sortData($event)">
+          <thead>
+          <tr>
+            <th mat-sort-header="timestamp">Date & Time</th>
+            <th mat-sort-header="traceId">Trace ID</th>
+            <th mat-sort-header="serviceMesh">Service Mesh</th>
+            <th mat-sort-header="numOfServices"># of services</th>
+            <th mat-sort-header="services">Services</th>
+            <th mat-sort-header="duration">Duration</th>
+          </tr>
+          </thead>
+          <tbody [ngClass]="{'align-top': !loadingTransactions && transactionsSorted.length}">
+          <tr *ngFor="let transaction of transactionsSorted" >
+            <td>{{transaction.time}}</td>
+            <td>{{transaction.traceId}}</td>
+            <td>{{transaction.serviceMesh}}</td>
+            <td>{{transaction.numOfServices}}</td>
+            <td>{{transaction.services}}</td>
+            <td>{{(transaction.duration)}} ms</td>
+          </tr>
+          <tr *ngIf="!loadingTransactions && !transactionsSorted.length">
+            <td colspan="6" style="border-bottom: none">No Data available</td>
+          </tr>
+          </tbody>
+        </table>
       </mat-card>
-
-      <mat-card fxFlex="80" fxLayout="column" *ngIf="loading">
-        <mat-card-header fxFlex="10">
-          <mat-card-title fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
-            <h3 fxFlex fxLayout="row" fxLayoutAlign="center center">Detail of Block #</h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
-
-          <mat-spinner></mat-spinner>
-
-        </mat-card-content>
+      <mat-card fxFlex fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; height:90%" *ngIf="loadingTransactions">
+        <mat-spinner></mat-spinner>
       </mat-card>
-
-
+      <button id="business-btn" class="btn1" routerLink="/traces">Trace Log</button>
     </div>
-  </div>
 </div>

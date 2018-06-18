@@ -21,7 +21,7 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
 
     this.routeSubscription = this.route.url.subscribe(
       url => {
-        if (url[0].path === 'block' || url[0].path === 'business') {
+        if (url[0].path === 'block' || url[0].path === 'traces') {
           this.isActive = true;
         } else {
           this.isActive = false;
