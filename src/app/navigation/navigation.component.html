@@ -7,7 +7,18 @@
   </div>
   <div class="header-actions">
     <clr-dropdown>
-      <button class="btn1" style="margin-right: 18px;">Smart Contract</button>
+      <button class="btn1" style="margin-right: 18px;" (click)="openModal()">Smart Contract</button>
     </clr-dropdown>
   </div>
 </header>
+<clr-modal [(clrModalOpen)]="isModalOpened" class="vibes-modal" id="smart-contract-code">
+  <h3 class="modal-title text-center">Smart Contract Code</h3>
+  <div class="modal-body">
+    <code>
+      <pre [innerHTML]="code">
+      </pre>
+    </code>
+  </div>
+  <div class="modal-footer">
+  </div>
+</clr-modal>
