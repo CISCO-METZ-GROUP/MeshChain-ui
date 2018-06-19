@@ -156,7 +156,7 @@ export class PublicMeshComponent implements OnInit, OnDestroy {
 
     this.loadZbForce = false;
     this.zbLoading = true;
-    this.zbSubscription = this.kubernetesService.loadKubernetes(true).subscribe(
+    this.zbSubscription = this.kubernetesService.loadZB(true).subscribe(
       res => {
         this.zb = res;
         this.sortedZb = res.slice();

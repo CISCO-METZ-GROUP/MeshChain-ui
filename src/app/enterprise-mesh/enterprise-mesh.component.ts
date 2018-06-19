@@ -156,7 +156,7 @@ export class EnterpriseMeshComponent implements OnInit, OnDestroy {
 
     this.loadZbForce = false;
     this.zbLoading = true;
-    this.zbSubscription = this.kubernetesService.loadKubernetes(false).subscribe(
+    this.zbSubscription = this.kubernetesService.loadZB(false).subscribe(
       res => {
         this.zb = res;
         this.sortedZb = res.slice();
