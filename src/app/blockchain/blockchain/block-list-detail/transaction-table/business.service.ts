@@ -49,7 +49,7 @@ export class BusinessService {
     );
 
     const obsP = this.http.post(AppConfig.REST_M_PUBLIC_BASE_URL + '/get_all_traces', bodyP).pipe(
-      map(res => this.extractObjectData(res, TransactionModel, 'Public'))
+      map(res => this.extractObjectData(res, TransactionModel, 'Public Cloud'))
     );
 
     return forkJoin(obsE, obsP);

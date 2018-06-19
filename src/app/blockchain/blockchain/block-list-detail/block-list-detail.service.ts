@@ -46,7 +46,7 @@ export class BlockListDetailService {
     );
 
     const obsP = this.http.post(AppConfig.REST_M_PUBLIC_BASE_URL + '/get_transactions_in_block', bodyP).pipe(
-      map(res => this.extractObjectData(res, TransactionModel, blockNumber, 'Public'))
+      map(res => this.extractObjectData(res, TransactionModel, blockNumber, 'Public Cloud'))
     );
 
     return forkJoin(obsE, obsP);
