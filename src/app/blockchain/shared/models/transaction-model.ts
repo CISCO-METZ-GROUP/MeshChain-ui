@@ -1,6 +1,6 @@
 export class TransactionModel {
   blockNumber: number;
-  // name: string;
+  name: string;
   timestamp: number;
   time: string;
   traceId: string;
@@ -12,12 +12,12 @@ export class TransactionModel {
 
   constructor(data: any) {
     this.blockNumber = data.blockNo;
-    // this.name = data.name;
+    this.name = data.name;
     this.timestamp = data.timestamp;
     this.time = new Date(this.timestamp / 1000).toLocaleString();
     this.traceId = data.traceID;
     this.id = data.ID;
-    this.serviceMesh = data.name.split(' ')[0];
+    this.serviceMesh = data.mesh;
     this.duration = data.duration;
   }
 

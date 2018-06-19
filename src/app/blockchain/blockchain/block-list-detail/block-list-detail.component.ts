@@ -88,8 +88,10 @@ export class BlockListDetailComponent implements OnInit, OnDestroy {
 
     this.transactionListSubscription = this.blockListDetailService.load(this.id).subscribe(
       tr => {
-        this.transactions = tr;
-        this.transactionsSorted = tr;
+        const arr = tr[0].concat(tr[1]);
+
+        this.transactions = arr;
+        this.transactionsSorted = arr;
         this.loadingTransactions = false;
       }
     );

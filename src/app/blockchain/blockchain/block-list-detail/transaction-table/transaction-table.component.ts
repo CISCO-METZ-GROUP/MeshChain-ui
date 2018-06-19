@@ -25,8 +25,10 @@ export class TransactionTableComponent implements OnInit, OnDestroy {
 
     this.businessSubscription = this.businessService.load().subscribe(
       res => {
-        this.data = res;
-        this.sortedData = res.slice();
+        const arr = res[0].concat(res[1]);
+
+        this.data = arr;
+        this.sortedData = arr.slice();
         this.loading = false;
       }
     );
