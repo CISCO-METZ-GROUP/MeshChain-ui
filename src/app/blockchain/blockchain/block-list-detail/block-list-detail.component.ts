@@ -126,10 +126,9 @@ export class BlockListDetailComponent implements OnInit, OnDestroy {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'timestamp': return this.compare(+a.timestamp, +b.timestamp, isAsc);
+        case 'id': return this.compare(a.id, b.id, isAsc);
         case 'traceId': return this.compare(a.traceId, b.traceId, isAsc);
         case 'serviceMesh': return this.compare(a.serviceMesh, b.serviceMesh, isAsc);
-        case 'numOfServices': return this.compare(+a.numOfServices, +b.numOfServices, isAsc);
-        case 'services': return this.compare(a.services, b.services, isAsc);
         case 'duration': return this.compare(+a.duration, +b.duration, isAsc);
 
         default: return 0;

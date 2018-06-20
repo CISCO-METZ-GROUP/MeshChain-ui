@@ -10,24 +10,22 @@
           <thead>
           <tr>
             <th mat-sort-header="timestamp">Date & Time</th>
+            <th mat-sort-header="id">ID</th>
             <th mat-sort-header="traceId">Trace ID</th>
             <th mat-sort-header="serviceMesh">Service Mesh</th>
-            <th mat-sort-header="numOfServices"># of services</th>
-            <th mat-sort-header="services">Services</th>
             <th mat-sort-header="duration">Duration</th>
           </tr>
           </thead>
           <tbody [ngClass]="{'align-top': !loadingTransactions && transactionsSorted.length}">
           <tr *ngFor="let transaction of transactionsSorted" >
             <td>{{transaction.time}}</td>
+            <td>{{transaction.id}}</td>
             <td>{{transaction.traceId}}</td>
             <td>{{transaction.serviceMesh}}</td>
-            <td>{{transaction.numOfServices}}</td>
-            <td>{{transaction.services}}</td>
             <td>{{(transaction.duration)}} ms</td>
           </tr>
           <tr *ngIf="!loadingTransactions && !transactionsSorted.length">
-            <td colspan="6" style="border-bottom: none">No Data available</td>
+            <td colspan="5" style="border-bottom: none">No Data available</td>
           </tr>
           </tbody>
         </table>
