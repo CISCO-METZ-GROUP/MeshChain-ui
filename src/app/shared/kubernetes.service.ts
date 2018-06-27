@@ -50,7 +50,7 @@ export class KubernetesService {
   public loadSMDP(isPublic: boolean) {
     const restUrl = isPublic ? AppConfig.REST_K_PUBLIC_BASE_URL : AppConfig.REST_K_ENTERPRISE_BASE_URL;
 
-    return this.http.get<SmdpModel>(restUrl + AppConfig.API_VERSION + '/pods').pipe(
+    return this.http.get<SmdpModel>(restUrl + AppConfig.API_VERSION + '/namespaces/bookinfo/pods').pipe(
       map(res => this.extractSMDPData(res))
     );
   }
