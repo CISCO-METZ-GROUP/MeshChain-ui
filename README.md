@@ -2,6 +2,9 @@
 
 GUI for MeshChain
 
+## Author
+Lubomir Balogh
+
 ## Prerequisities
 
 - Both the CLI and generated project have dependencies that require Node.js.
